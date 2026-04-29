@@ -1,0 +1,113 @@
+  # Encapsulation
+class BankAccount:
+    def __init__(self):
+        self.__balance = 1000  
+
+    def get_balance(self):
+        return self.__balance  
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+account = BankAccount()
+account.deposit(500)
+print(account.get_balance()) 
+
+print(account.__balance)  
+
+#  Inheritance
+class Animal:       
+    def __init__(self, name):
+        self.name = name
+
+    def eat(self):
+        print(f"{self.name} is eating! ")
+
+    def sleep(self):
+        print(f"{self.name} is sleeping! ")
+
+
+class Dog(Animal):     
+    def bark(self):
+        print(f"{self.name} says Woof! ")
+
+
+class Cat(Animal):    
+    def meow(self):
+        print(f"{self.name} says Meow! ")
+
+dog = Dog("Bruno")
+dog.eat()    
+dog.bark()   
+
+cat = Cat("Kitty")
+cat.sleep()  
+cat.meow()    
+
+# Polymorphism
+class Dog:
+    def speak(self):
+        print("Woof! ")
+
+class Cat:
+    def speak(self):
+        print("Meow! ")
+
+class Duck:
+    def speak(self):
+        print("Quack! ")
+
+
+animals = [Dog(), Cat(), Duck()]
+
+for animal in animals:
+    animal.speak()
+
+# Abstraction
+from abc import ABC, abstractmethod
+
+class Car:                        
+    @abstractmethod
+    def start(self):              
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+    def fuel_type(self):          
+        print("This car uses fuel! ")
+
+
+class Toyota(Car):
+    def start(self):
+        print("Toyota starts with a key! ")
+
+    def stop(self):
+        print("Toyota stopped! ")
+
+
+class Tesla(Car):
+    def start(self):
+        print("Tesla starts with a button!")
+
+    def stop(self):
+        print("Tesla stopped silently!")
+
+
+# Using them
+t1 = Toyota()
+t1.start()
+t1.fuel_type()
+t1.stop()
+
+print("---")
+
+t2 = Tesla()
+t2.start()
+t2.fuel_type()
+t2.stop()
+
+
+
